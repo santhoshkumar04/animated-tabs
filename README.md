@@ -31,4 +31,4 @@ The tabs themselves are implemented using buttons with custom styling. When a ta
 
 ### Credits
 
-This project was created by [Santhosh Kumar](https://github.com/santhoshkumar04) and adapted by ChatGPT for the purpose of this README.
+This project was created by [Santhosh Kumar](https://github.com/santhoshkumar04).
