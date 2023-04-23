@@ -1,38 +1,34 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Animated Tabs
 
-## Getting Started
+This is a React project that showcases a tabbed interface with animated transitions. The tabs contain information about different countries, and when a tab is selected, the corresponding information is displayed below it.
 
-First, run the development server:
+### Getting Started
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+To get started with this project, follow these steps:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Clone this repository.
+2. Navigate to the root folder of the project.
+3. Install the dependencies using the command `npm install`.
+4. Run the project using the command `npm run dev`.
+5. Open `http://localhost:3000` in your browser to view the application.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### Technologies Used
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+This project uses the following technologies:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- React
+- Next.js
+- Framer Motion
+- clsx
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### How it Works
 
-## Learn More
+The `tabs` array contains information about the different tabs in the interface, including the tab's ID, label, and description.
 
-To learn more about Next.js, take a look at the following resources:
+The `Home` component contains the main structure of the application. It uses state to keep track of the currently active tab, and when a tab is selected, the corresponding information is displayed using conditional rendering.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The tabs themselves are implemented using buttons with custom styling. When a tab is clicked, its ID is set as the active tab, and the `motion` component is used to create a smooth transition to the new tab.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Credits
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project was created by [Santhosh Kumar](https://github.com/santhoshkumar04) and adapted by ChatGPT for the purpose of this README.
