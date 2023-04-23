@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import React from "react";
 import { motion } from "framer-motion";
+import clsx from "clsx";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -44,30 +45,35 @@ export default function Home() {
   return (
     <>
       <main className={`min-h-screen px-24 py-5 flex items-center justify-center ${inter.className}`}>
-        <div className="max-w-5xl w-full relative rounded-lg border border-white/10 shadow-md backdrop-blur-0">
+        <div className="max-w-5xl w-full relative rounded-lg border dark:border-white/10 border-black/10 shadow-md backdrop-blur-0">
           <div className="h-96 before:absolute flex items-center justify-center before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]"></div>
           <a
             href="https://github.com/santhoshkumar04/animated-tabs"
-            className="absolute flex items-center text-gray-500 hover:text-gray-400 transition-colors duration-300 gap-2 top-3 right-4"
+            className="absolute flex items-center dark:text-gray-700 text-gray-500 dark:hover:text-gray-500 hover:text-gray-800 transition-colors duration-300 gap-2 top-3 right-4"
           >
-            <Image src="/github.svg" alt="logo" width={30} height={30} />
+            <Image src="/github.svg" className="fill-gray-700 hover:fill-gray-500" alt="logo" width={20} height={20} />
             <span>Github</span>
           </a>
-          <div className="border border-gray-300/10 rounded-md flex flex-col gap-6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 from-white/10 to-transparent p-2">
-            <div className="flex gap-2 mx-auto backdrop-blur-lg border border-white/10 p-1 rounded-full">
+          <div className="border dark:border-gray-300/10 border-black/10 rounded-md flex flex-col gap-6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 from-white/10 to-transparent p-2">
+            <div className="flex gap-2 mx-auto backdrop-blur-lg border dark:border-white/10 border-black/10 p-1 rounded-full">
               {tabs.map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className="relative px-3 py-1.5 transition rounded-full"
+                  className={clsx(
+                    activeTab === tab.id
+                      ? "text-gray-900 dark:text-white"
+                      : "text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200",
+                    "relative px-3 py-1.5 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200 transition rounded-full"
+                  )}
                 >
                   {activeTab === tab.id && (
                     <motion.span
-                      layoutId="bubble"
-                      className="inset-0 backdrop-blur-xl bg-white/10 absolute"
-                      transition={{ duration: 0.4, bounce: 0.2, type: "spring" }}
+                      layoutId="selected"
+                      className="inset-0 backdrop-blur-xl dark:bg-white/10 bg-slate-500/20 absolute"
+                      transition={{ duration: 0.6, bounce: 0.2, type: "spring" }}
                       style={{
-                        borderRadius: `9999px`,
+                        borderRadius: "999px",
                       }}
                     />
                   )}
@@ -75,8 +81,14 @@ export default function Home() {
                 </button>
               ))}
             </div>
-            <div className="line-clamp-3 p-2 pb-6 text-sm">
-              {tabs.map((tab) => (activeTab === tab.id ? tab.description : null))}
+            <div className="p-2 pb-6 mb-3 overflow-hidden text-sm">
+              <motion.span
+                layoutId="description"
+                transition={{ opacity: 0.4 }}
+                className="line-clamp-3 text-gray-700 dark:text-gray-400"
+              >
+                {tabs.map((tab) => (activeTab === tab.id ? tab.description : null))}
+              </motion.span>
             </div>
           </div>
         </div>
